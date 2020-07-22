@@ -1,0 +1,14 @@
+version: "3.5"
+services:
+  python-code-test:
+    image: ostmodern/python-code-test:latest
+    links:
+      - database
+
+  # sample NoSQL db
+  database:
+    image: amazon/dynamodb-local
+
+  # sample RDBMS
+  # database:
+  #  image: postgres
