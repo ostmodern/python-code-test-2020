@@ -1,5 +1,3 @@
-# Ostmodern Python Code Test
-
 The goal of this exercise is to test if you know your way around developing
 REST APIs in Python using docker. You can use any rest framework and database
 of your choice. Approach it the way you would an actual long-term project.
@@ -29,7 +27,7 @@ http://www.omdbapi.com/?i=<episode title id>&apikey=<api key> (for an episode)
 Select the ones you think are important.
 * Create GET API endpoints that can return episode information in a list format, as well as information for a specific episode, when retrieved by id
 * Design a data model to store basic text comments to be associated with a specific episode, along with a GET API to retrieve all of the comments for an episode
-* Design a separate CRUD API for these text comments, to be associated with a specific episode
+* Design and implement a separate CRUD API for these text comments.
 
 Nice to have:
 
