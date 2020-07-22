@@ -13,8 +13,7 @@ Feel free to change it as per your choice of database.
 
 Your task is to build a JSON-based REST API for your frontend developers to
 consume. You have built a list of user stories with your colleagues, but you get
-to decide how to design the API. Remember that the frontend developers will need
-some documentation of your API to understand how to use it.
+to decide how to design the API. 
 
 We do not need you to implement users or authentication, to reduce the amount of
 time this exercise will take to complete. 
@@ -24,7 +23,8 @@ time this exercise will take to complete.
 The APIs that may be used are:
  http://www.omdbapi.com/?t=Game of Thrones&Season=1&apikey=<api key>
  http://www.omdbapi.com/?i=tt1480055&apikey=<api key> (for an episode)
-* Design the data model to store this data.
+* Design the data model to store this data. You need not store all the attributes of an episode. 
+Select the ones you think are important.
 * An GET API to list episodes where `imdbRating` is greater than 8.8 for a season or all seasons.
 * Write some unit tests
 * Remember that the frontend developers will need
