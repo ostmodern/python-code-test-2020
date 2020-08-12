@@ -14,7 +14,9 @@ consume. You have built a list of user stories with your colleagues, but you get
 to decide how to design the API.
 
 We do not need you to implement users or authentication, to reduce the amount of
-time this exercise will take to complete.
+time this exercise will take to complete. Ideally, you should not spend more than
+about 4 hours total working time on the exercise, but can be completed over as
+long a period as is required.
 
 Required:
 
