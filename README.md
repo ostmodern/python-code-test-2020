@@ -28,12 +28,10 @@ http://www.omdbapi.com/?i=<episode title id>&apikey=<api key> (for an episode)
 * Design the data model to store this data. You need not store all the attributes of an episode.
 Select the ones you think are important.
 * Create GET API endpoints that can return episode information in a list format, as well as information for a specific episode, when retrieved by id
-* Design a data model to store basic text comments to be associated with a specific episode, along with a GET API to retrieve all of the comments for an episode
-* Design and implement a separate CRUD API for these text comments.
 
 Nice to have:
 
-
-* Ability to filter  episodes where `imdbRating` is greater than 8.8 for a season or for all seasons.
+* Design a data model to store basic text comments to be associated with a specific episode, along with a GET API to retrieve all of the comments for an episode
+* Design and implement a separate CRUD API for these text comments.
+* Ability to filter episodes where `imdbRating` is greater than 8.8 for a season or for all seasons.
 * Write some unit tests
-* Remember that the frontend developers will need some documentation of your APIs to understand how to use them.
