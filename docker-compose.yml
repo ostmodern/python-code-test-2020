@@ -1,13 +1,19 @@
 version: "3.5"
 services:
-  python-code-test:
-    image: ostmodern/python-code-test:latest
-    links:
-      - database
+  server:
+    build: .
+    container_name: "server"
+    restart: on-failure
+    ports:
+      - 8000:80
+    command: "uvicorn app.main:app --host 0.0.0.0 --port 80"
+#    image: ostmodern/python-code-test:latest
+#    links:
+#      - database
 
   # sample NoSQL db
-  database:
-    image: amazon/dynamodb-local
+#  database:
+#    image: amazon/dynamodb-local
 
   # sample RDBMS
   # database:
