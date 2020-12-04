@@ -37,6 +37,6 @@ Nice to have:
 * Write some unit tests
 
 
-# TO RUN app run `docker-compose up --build` or `uvicorn app.main:app --host 0.0.0.0 --port 80`
+# TO RUN app run `docker-compose up --build` or `uvicorn app.main:app --host 0.0.0.0 --port 80` and open `http://localhost:8000/docs#/`
 
 # TO RUN TESTS run `pytest .`
