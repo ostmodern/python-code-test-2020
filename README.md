@@ -35,3 +35,8 @@ Nice to have:
 * Design and implement a separate CRUD API for these text comments.
 * Ability to filter episodes where `imdbRating` is greater than 8.8 for a season or for all seasons.
 * Write some unit tests
+
+
+# TO RUN app run `docker-compose up --build` or `uvicorn app.main:app --host 0.0.0.0 --port 80` and open `http://localhost:8000/docs#/`
+
+# TO RUN TESTS run `pytest .`
