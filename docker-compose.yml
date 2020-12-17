@@ -1,14 +1,50 @@
-version: "3.5"
+version: '3'
+
 services:
-  python-code-test:
-    image: ostmodern/python-code-test:latest
-    links:
-      - database
 
-  # sample NoSQL db
-  database:
-    image: amazon/dynamodb-local
+  omdb:
+    build: .
+    environment:
+      - DJANGO_ENV=development
+      - OMDB_API_KEY=2c20ba41
+      - SECRET_KEY=)fmgafq@pd=7906(&b=4=md*mu@f#52i)(pk_+2r#l9juo+gj4
+    # for live updates
+    volumes:
+      - ./omdb:/srv/python-code-test/omdb
+    networks:
+      - nginx_network
+      - postgres
+    depends_on:
+      - postgres
 
-  # sample RDBMS
-  # database:
-  #  image: postgres
+  nginx:
+    image: nginx:latest
+    ports:
+      - 8000:80
+    volumes:
+      - ./config/nginx/dev_conf.d:/etc/nginx/conf.d
+    depends_on:  
+      - omdb
+    networks:
+      - nginx_network
+  
+  postgres:
+    image: postgres:10
+    env_file:
+      - config/db/database_env
+    networks:
+      - postgres
+    volumes:
+      - postgres_database_volume:/var/lib/postgresql/data
+
+networks:
+  # create the network between omdb, postgres, nginx, pgbouncer
+  nginx_network:
+    driver: bridge
+
+  postgres:
+    driver: bridge
+
+
+volumes:
+  postgres_database_volume:

@@ -1,2 +1,5 @@
 .git
 *.pyc
+venv/
+.DS_Store
+db.sqlite3
