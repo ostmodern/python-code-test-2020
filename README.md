@@ -35,3 +35,16 @@ Nice to have:
 * Design and implement a separate CRUD API for these text comments.
 * Ability to filter episodes where `imdbRating` is greater than 8.8 for a season or for all seasons.
 * Write some unit tests
+
+Results
+
+* Implemented downloading all GOT episodes (by following the link from the home page)
+* Stored the data in the django's model
+* Created GET API endpoints that can return episode information in a list format (can be followed by the link from the home page), as well as information for a specific episode, when retrieved by id
+* Designed a data model to store basic text comments to be associated with a specific episode (can be seen in the models file)
+* Designed a GET API to retrieve all of the comments for an episode (url for the specific episode + /comments)
+* Designed and implemented a separate CRUD API for these text comments (can be accessed from the url host/comments/id, where id is the comments id)
+* Added ability to filter episodes where `imdbRating` is greater than 8.8 for a season or for all seasons (can be accessed from the home page)
+* Added unit tests for base checking of episods API
+
+To set up use `docker-compose up`

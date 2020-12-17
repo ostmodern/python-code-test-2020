@@ -1,0 +1,4 @@
+#Keep in sync with settings.py
+POSTGRES_USER=admin
+POSTGRES_PASSWORD=SUPER_HARD_PASSWORD
+POSTGRES_DB=omdb
