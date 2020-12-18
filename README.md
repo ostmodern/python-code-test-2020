@@ -1,3 +1,17 @@
+## Running
+
+To run server
+
+`cp .env.example .env`
+
+`docker-compose up`
+
+To run tests
+
+`docker-compose exec python-code-test python manage.py test`
+
+## Intro
+
 The goal of this exercise is to test if you know your way around developing
 REST APIs in Python using docker. You can use any rest framework and database
 of your choice. Approach it the way you would an actual long-term project.
