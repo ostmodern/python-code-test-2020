@@ -1,7 +1,7 @@
 # Alpine base image that contains python 3.7
 FROM python:3.7-alpine
 
-WORKDIR /srv/python-code-test
+WORKDIR /code
 COPY requirements.txt .
 
 # Install system dependencies

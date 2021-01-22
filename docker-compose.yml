@@ -1,14 +1,39 @@
 version: "3.5"
+
+volumes:
+  mongo_data_vol:
+    external: false
+
 services:
   python-code-test:
+    build: .
     image: ostmodern/python-code-test:latest
+    restart: always
+    command: flask run --host=0.0.0.0 --port=5001
+    environment:
+      - SHELL=/bin/sh
+      - DEBUG=true
+    ports:
+    - 5001:5001
     links:
       - database
+    volumes:
+      - type: bind
+        source: ./
+        target: /code/
+    stop_signal: SIGINT
+    container_name: app
 
-  # sample NoSQL db
   database:
-    image: amazon/dynamodb-local
-
+    image: mongo:4
+    restart: always
+    expose:
+      - 27017
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo_data_vol:/data/db
+    container_name: mongo
   # sample RDBMS
   # database:
   #  image: postgres
