@@ -1,3 +1,7 @@
+Run with docker-compose up
+Url for draft swagger documents 0.0.0.0:5001:docs
+
+
 The goal of this exercise is to test if you know your way around developing
 REST APIs in Python using docker. You can use any rest framework and database
 of your choice. Approach it the way you would an actual long-term project.
