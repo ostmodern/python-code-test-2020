@@ -1,0 +1,69 @@
+swagger: "2.0"
+info:
+  description: "This is documentation for Python Code Test."
+  version: "0.1"
+  title: "Python Code Test"
+
+paths:
+
+  /episodes:
+    get:
+      summary: Returns all episodes of Game of Thrones
+      produces:
+        - application/json
+      responses:
+        200:
+          description: List of episodes
+  /get-episodes:
+    get:
+      summary: Populates db with all episodes of Game of Thrones. Accepts "name" parameter for other movies.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: DB successfully populated
+  /episodes/{imdbID}:
+    get:
+      summary: Returns single episode.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Single episode.
+  /episodes/{imdbID}/comments:
+    get:
+      summary: Returns comments for this episode
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Comments for episode
+
+  /comments:
+    post:
+      summary: For comment creation
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Comment created
+    patch:
+      summary: For comment editing
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Comment edited
+    delete:
+      summary: For comments deleting
+      responses:
+       200:
+         description: Comment deleted
+
+
+
+
