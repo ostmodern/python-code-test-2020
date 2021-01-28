@@ -1,0 +1,113 @@
+openapi: "3.0.0"
+
+info:
+  title: Assignment task
+  version: "1.0"
+servers:
+  - url: http://0.0.0.0:80
+
+
+paths:
+  /episodes:
+    get:
+      summary: Get all episodes
+      operationId: app.views.episodes_retrieve_all
+      responses:
+        '200':
+          description: Episodes list
+        '400':
+          description: Error
+
+  /episode/{id}:
+    get:
+      summary: Display episode
+      description: Display episode
+      operationId: app.views.episode_retrieve_one
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Episode
+        '400':
+          description: Error
+
+  /comments:
+    get:
+      summary: Get all comments
+      operationId: app.views.comments_retrieve_all
+      responses:
+        '200':
+          description: Comments list
+        '400':
+          description: Error
+    post:
+      summary: Create a comment
+      operationId: app.views.comment_create_one
+      requestBody:
+        $ref: '#/components/requestBodies/create_comment'
+      responses:
+        '200':
+          description: Comment
+        '400':
+          description: Error
+        '404':
+          description: Error
+
+  /comment/{id}:
+    get:
+      summary: Get comment
+      operationId: app.views.comment_retrieve_one
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Comment
+        '400':
+          description: Error
+        '404':
+          description: Error
+    patch:
+      summary: Update comment
+      operationId: app.views.comment_update_one
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Episodes list
+        '400':
+          description: Error
+        '404':
+          description: Error
+
+
+components:
+  parameters:
+    min_rating:
+      in: query
+      name: min_rating
+      schema:
+        type: string
+        format: float
+        default: '0.0'
+    id:
+      in: path
+      name: id
+      required: true
+      schema:
+        type: integer
+
+  requestBodies:
+    create_comment:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/comment'
+
+  schemas:
+    comment:
+      properties:
+        text:
+          type: string
+        episode_id:
+          type: integer

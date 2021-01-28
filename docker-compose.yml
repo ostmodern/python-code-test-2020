@@ -1,14 +1,22 @@
-version: "3.5"
+version: "3"
+
 services:
-  python-code-test:
-    image: ostmodern/python-code-test:latest
-    links:
-      - database
+  backend:
+    build:
+      context: .
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+    env_file:
+      local.env
+  db:
+    image: postgres:12-alpine
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      local.env
 
-  # sample NoSQL db
-  database:
-    image: amazon/dynamodb-local
-
-  # sample RDBMS
-  # database:
-  #  image: postgres
+volumes:
+  postgres_data:
