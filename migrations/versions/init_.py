@@ -21,15 +21,25 @@ def upgrade():
                     sa.Column('id', sa.INTEGER(), autoincrement=True, nullable=False),
                     sa.Column('title', sa.VARCHAR(length=100), nullable=False),
                     sa.Column('released', sa.DATE(), nullable=True),
-                    sa.Column('season_num', sa.INTEGER()),
-                    sa.Column('episode_num', sa.INTEGER()),
+                    sa.Column('season', sa.INTEGER()),
+                    sa.Column('episode', sa.INTEGER()),
                     sa.Column('imdb_rating', sa.NUMERIC(2, 1)),
                     sa.Column('imdb_id', sa.VARCHAR(length=100), nullable=False),
                     sa.PrimaryKeyConstraint('id', name='episodes_pkey'),
                     sa.UniqueConstraint("id"),
                     )
+    op.create_table('comments',
+                    sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
+                    sa.Column('text', sa.Text()),
+                    sa.Column('timestamp', sa.DateTime()),
+                    sa.Column('episode_id', sa.Integer()),
+                    sa.ForeignKeyConstraint(['episode_id'], ['episodes.id'], name='comments_episode_id_fkey'),
+                    sa.PrimaryKeyConstraint('id', name='comments_pkey'),
+                    )
+
     op.create_index('ix_episodes_imdb_id', 'episodes', ['imdb_id'], unique=True)
 
 
 def downgrade():
     op.drop_table('episodes')
+    op.drop_table('comments')

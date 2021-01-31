@@ -12,6 +12,8 @@ paths:
     get:
       summary: Get all episodes
       operationId: app.views.episodes_retrieve_all
+      parameters:
+        - $ref: '#/components/parameters/only_best'
       responses:
         '200':
           description: Episodes list
@@ -73,7 +75,19 @@ paths:
         - $ref: '#/components/parameters/id'
       responses:
         '200':
-          description: Episodes list
+          description: Comment
+        '400':
+          description: Error
+        '404':
+          description: Error
+    delete:
+      summary: Delete comment
+      operationId: app.views.comment_delete_one
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '204':
+          description: NoContent
         '400':
           description: Error
         '404':
@@ -82,13 +96,12 @@ paths:
 
 components:
   parameters:
-    min_rating:
+    only_best:
       in: query
-      name: min_rating
+      name: only_best
       schema:
-        type: string
-        format: float
-        default: '0.0'
+        type: boolean
+        default: false
     id:
       in: path
       name: id

@@ -13,4 +13,4 @@ marshmallow
 
 # dev
 pytest
-requests
+starlette
