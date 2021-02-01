@@ -25,6 +25,6 @@ All basic and additional requirements have been met.
 Next steps should be:
 - adding functional tests with database & requests checking
 - implementing async import
-- maybe moving to asynchronous Python webframework: (FastApi/Quart/Starlette).
-All of them has version number below 1, so i decided to use more stable Flask web-framework
+- maybe moving to asynchronous Python web-framework: (FastApi/Quart/Starlette)
+All of them now has version number below 1, so i decided to use more stable Flask web-framework
 - adding Redis cache

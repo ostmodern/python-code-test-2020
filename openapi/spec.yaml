@@ -66,6 +66,18 @@ paths:
           description: Error
         '404':
           description: Error
+    delete:
+      summary: Delete comment
+      operationId: app.views.comment_delete_one
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Comment
+        '400':
+          description: Error
+        '404':
+          description: Error
     patch:
       summary: Update comment
       operationId: app.views.comment_update_one
