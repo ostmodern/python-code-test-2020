@@ -12,10 +12,11 @@ class EpisodeSchema(ma.SQLAlchemyAutoSchema):
 
 
 class CommentSchema(ma.SQLAlchemyAutoSchema):
-
     class Meta:
         model = Comment
 
 
 episode_schema = EpisodeSchema()
+episodes_schema = EpisodeSchema(many=True)
 comment_schema = CommentSchema()
+comments_schema = CommentSchema(many=True)

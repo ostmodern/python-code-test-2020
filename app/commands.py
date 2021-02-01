@@ -4,6 +4,7 @@ from app import db
 from app.models import Episode
 from app.utils import get_episodes
 
+
 @click.command(name="import_episodes", help="Import all episodes of GoT to database")
 @with_appcontext
 def import_episodes():
@@ -29,4 +30,4 @@ def import_episodes():
             click.echo("Episodes imported")
         except Exception as e:
             db.session.rollback()
-            print(f"Exception: {e}")
+            click.echo(f"Exception: {e}")

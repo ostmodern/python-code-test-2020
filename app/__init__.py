@@ -32,6 +32,7 @@ app = init_app()
 
 with app.app_context():
     from app.commands import import_episodes
+
     app.cli.add_command(import_episodes)
 
     db.create_all()
