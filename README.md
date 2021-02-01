@@ -1,37 +1,30 @@
-The goal of this exercise is to test if you know your way around developing
-REST APIs in Python using docker. You can use any rest framework and database
-of your choice. Approach it the way you would an actual long-term project.
+Interactive SwaggerUI is available on http://0.0.0.0/ui/
 
-To start with, a Dockerfile (with Python3.7 Alpine image) has been provided for you.
-A docker-compose file with stubs for a sample SQL and a NoSQL database has also been provided.
-Feel free to change it as per your choice of database.
+Endpoints:
+GET 0.0.0.0/episodes/ (also supports 'only_best' boolean query_param for showing only episodes with imdb_rating greater than 8.8
+GET 0.0.0.0/episode/<id> e.g http://0.0.0.0/episode/2
+
+GET 0.0.0.0/comments/
+POST 0.0.0.0/comments/
+
+GET 0.0.0.0/comment/<id>
+PATCH 0.0.0.0/comment/<id>
+DELETE 0.0.0.0/comment/<id>
+
+%HOSTNAME%/episodes/
 
 
-## Tasks
+To start unit tests, use  
+```docker-compose exec backend pytest app```
+Tests is only checking consistency of models.
 
-Your task is to build a JSON-based REST API for your frontend developers to
-consume. You have built a list of user stories with your colleagues, but you get
-to decide how to design the API.
+Results:
+This project created using Flask/Connexion/Postgresql/Pytest
+All basic and additional requirements have been met.
 
-We do not need you to implement users or authentication, to reduce the amount of
-time this exercise will take to complete. Ideally, you should not spend more than
-about 4 hours total working time on the exercise, but can be completed over as
-long a period as is required.
-
-Required:
-
-* Ability to import all episodes of all seasons of `Game of Thrones` from [OMDb API](http://www.omdbapi.com/).
-(You will have to get an APIKey from http://www.omdbapi.com/apikey.aspx to use their API)
-The APIs that should probably be used are in the following format:
-http://www.omdbapi.com/?t=Game of Thrones&Season=1&apikey=<api key>
-http://www.omdbapi.com/?i=<episode title id>&apikey=<api key> (for an episode)
-* Design the data model to store this data. You need not store all the attributes of an episode.
-Select the ones you think are important.
-* Create GET API endpoints that can return episode information in a list format, as well as information for a specific episode, when retrieved by id
-
-Nice to have:
-
-* Design a data model to store basic text comments to be associated with a specific episode, along with a GET API to retrieve all of the comments for an episode
-* Design and implement a separate CRUD API for these text comments.
-* Ability to filter episodes where `imdbRating` is greater than 8.8 for a season or for all seasons.
-* Write some unit tests
+Next steps should be:
+- adding functional tests with database & requests checking
+- implementing async import
+- maybe moving to asynchronous Python web-framework: (FastApi/Quart/Starlette)
+All of them now has version number below 1, so i decided to use more stable Flask web-framework
+- adding Redis cache

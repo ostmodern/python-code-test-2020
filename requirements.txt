@@ -1,0 +1,16 @@
+click
+connexion[swagger-ui]
+flask
+flask_migrate
+flask_script
+flask_sqlalchemy
+psycopg2-binary
+requests
+
+flask-marshmallow
+marshmallow-sqlalchemy
+marshmallow
+
+# dev
+pytest
+starlette

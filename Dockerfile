@@ -1,12 +1,12 @@
-# Alpine base image that contains python 3.7
-FROM python:3.7-alpine
+FROM python:3.8-slim-buster
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-WORKDIR /srv/python-code-test
-COPY requirements.txt .
+WORKDIR /home/user
+COPY requirements.txt requirements.txt
 
-# Install system dependencies
-# Install pip dependencies in the same layer
-RUN apk add --no-cache  \
-    bash build-base gcc && \
-    pip install --no-cache-dir pip-tools==5.2.1 && \
-    pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt --upgrade pip && pip install gunicorn
+
+COPY . /home/user
+
+ENTRYPOINT ["./runserver.sh"]
