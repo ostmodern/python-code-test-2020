@@ -1,5 +1,4 @@
 import connexion
-from flask import Flask, g
 import logging
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -20,7 +19,6 @@ def init_app():
     app.add_api("spec.yaml", arguments={"title": "Assignment task"})
     app.app.config.from_object(Config)
 
-
     db.init_app(app.app)
     migrate.init_app(app=app.app, db=db)
     return app.app
@@ -33,8 +31,6 @@ ma = Marshmallow()
 app = init_app()
 
 with app.app_context():
-    from app.models import *
-    from app.views import *
     from app.commands import import_episodes
     app.cli.add_command(import_episodes)
 

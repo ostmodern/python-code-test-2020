@@ -41,5 +41,5 @@ def upgrade():
 
 
 def downgrade():
-    op.drop_table('episodes', cascade=)
+    op.drop_table('episodes')
     op.drop_table('comments')

@@ -2,6 +2,7 @@ import click
 from flask.cli import with_appcontext
 from app import db
 from app.models import Episode
+from app.utils import get_episodes
 
 @click.command(name="import_episodes", help="Import all episodes of GoT to database")
 @with_appcontext

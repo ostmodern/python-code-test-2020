@@ -1,3 +1,4 @@
+import logging
 import os
 import requests
 
@@ -11,14 +12,19 @@ seasons_qty = int(all_seasons_json["totalSeasons"])
 
 
 def get_episodes():
-    def get_season(season_num):
-        season_url = f"http://www.omdbapi.com/?t=Game of Thrones&Season={season_num}&apikey={API_KEY}"
-        season_json = requests.get(season_url).json()
-        return season_json
-
+    episodes = []
     seasons = []
-    for season_num in range(seasons_qty+1):
-        episodes = [dict(ep, **{"Season": season_num}) for ep in get_season(season_num)]
-        seasons.append(episodes)
+    for season_num in range(seasons_qty):
+        season_url = f'http://www.omdbapi.com/?t=Game of Thrones&Season={season_num+1}&apikey={API_KEY}'
+        season_json = requests.get(season_url).json()
+        seasons.append(season_json)
+
+    for season in seasons:
+        logging.info(season)
+        season_num = season['Season']
+        for ep in season['Episodes']:
+            ep['Season'] = season_num
+
+        episodes.extend(season['Episodes'])
 
     return episodes

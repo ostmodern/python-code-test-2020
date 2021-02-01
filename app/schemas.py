@@ -16,5 +16,6 @@ class CommentSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Comment
 
+
 episode_schema = EpisodeSchema()
 comment_schema = CommentSchema()
