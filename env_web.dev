@@ -1,0 +1,5 @@
+DEBUG=1
+SECRET_KEY=$y#3oc=#(0fooemozl17)n%mz*=!bf%21qe-e4*l52lv8ls^&6
+DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1
+DJANGO_SETTINGS_MODULE=got_api.settings_local
+OMDB_API_KEY=76bce608

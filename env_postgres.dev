@@ -1,0 +1,4 @@
+POSTGRES_USER=got_api_db_user
+POSTGRES_PASSWORD=qwerty
+POSTGRES_DB=got_api_db
+POSTGRES_HOST=database

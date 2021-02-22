@@ -35,3 +35,15 @@ Nice to have:
 * Design and implement a separate CRUD API for these text comments.
 * Ability to filter episodes where `imdbRating` is greater than 8.8 for a season or for all seasons.
 * Write some unit tests
+
+    
+Set up
+
+* Build images and run containers:<br /> 
+  docker-compose up -d --build
+* Run tests: <br />
+  docker exec -it \$(docker ps | grep web | awk '{ print \$1 }') bash <br />
+  python got_api/manage.py test got_api/
+  
+  
+Swagger schema: http://127.0.0.1:80/swagger-ui/
