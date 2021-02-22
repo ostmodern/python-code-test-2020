@@ -1,0 +1,381 @@
+openapi: 3.0.2
+info:
+  title: 'GOT API'
+  version: '1.0.0'
+paths:
+  /seasons/episodes/:
+    get:
+      operationId: listEpisodes
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Episode'
+          description: 'Get all episodes'
+      tags:
+      - seasons
+    post:
+      operationId: createEpisode
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Episode'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Episode'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Episode'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Episode'
+          description: ''
+      tags:
+      - seasons
+  /seasons/episodes/filter_episodes/:
+    get:
+      operationId: filterEpisodesEpisode
+      description: ''
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: integer
+          required: false
+          description: Filters by Episode id
+        - in: query
+          name: season
+          schema:
+            type: integer
+          required: false
+          description: Filters by Season number
+        - in: query
+          name: gt_imdb_rating
+          schema:
+            type: float
+          required: false
+          description: Filters episodes with IMDB rating greater than value
+        - in: query
+          name: lt_imdb_rating
+          schema:
+            type: float
+          required: false
+          description: Filters episodes with IMDB rating lesser than value
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Episode'
+          description: ''
+      tags:
+      - seasons
+  /seasons/episodes/{id}/:
+    get:
+      operationId: retrieveEpisode
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this episode.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Episode'
+          description: ''
+      tags:
+      - seasons
+    put:
+      operationId: updateEpisode
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this episode.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Episode'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Episode'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Episode'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Episode'
+          description: ''
+      tags:
+      - seasons
+    patch:
+      operationId: partialUpdateEpisode
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this episode.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Episode'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Episode'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Episode'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Episode'
+          description: ''
+      tags:
+      - seasons
+    delete:
+      operationId: destroyEpisode
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this episode.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - seasons
+  /comments/:
+    get:
+      operationId: listComments
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Comment'
+          description: ''
+      tags:
+      - comments
+    post:
+      operationId: createComment
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Comment'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+          description: ''
+      tags:
+      - comments
+  /comments/episode_comments/:
+    get:
+      operationId: episodeCommentsComment
+      description: ''
+      parameters:
+        - name: episode_id
+          in: query
+          required: true
+          description: Episode id.
+          schema:
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+          description: ''
+      tags:
+      - comments
+  /comments/{id}/:
+    get:
+      operationId: retrieveComment
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this comment.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+          description: ''
+      tags:
+      - comments
+    put:
+      operationId: updateComment
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this comment.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Comment'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+          description: ''
+      tags:
+      - comments
+    patch:
+      operationId: partialUpdateComment
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this comment.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Comment'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+          description: ''
+      tags:
+      - comments
+    delete:
+      operationId: destroyComment
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this comment.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - comments
+components:
+  schemas:
+    Episode:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 100
+        season_number:
+          type: integer
+          maximum: 32767
+          minimum: 0
+        episode_number:
+          type: integer
+          maximum: 32767
+          minimum: 0
+        released:
+          type: string
+          format: date
+        imdb_rating:
+          type: number
+      required:
+      - title
+      - season_number
+      - episode_number
+      - released
+      - imdb_rating
+    Comment:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        comment_text:
+          type: string
+          maxLength: 250
+        date_added:
+          type: string
+          format: date-time
+          readOnly: true
+        episode:
+          type: integer
+      required:
+      - comment_text
+      - episode

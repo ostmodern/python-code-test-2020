@@ -1,14 +1,44 @@
-version: "3.5"
+version: "3.8"
 services:
-  python-code-test:
-    image: ostmodern/python-code-test:latest
-    links:
-      - database
+#  python-code-test:
+#    image: ostmodern/python-code-test:latest
+#    links:
+#      - database
 
   # sample NoSQL db
-  database:
-    image: amazon/dynamodb-local
+#  database:
+#    image: amazon/dynamodb-local
+  web:
+    build:
+      context: .
+    command: bash -c "cd got_api && gunicorn --workers 7 got_api.wsgi:application --bind 0.0.0.0:8000"
+    expose:
+      - 8000
+    volumes:
+      - static_volume:/srv/python-code-test/got_api/static
+    depends_on:
+      - database
+    env_file:
+      - env_web.dev
+      - env_postgres.dev
 
   # sample RDBMS
-  # database:
-  #  image: postgres
+  database:
+    image: postgres:13
+    volumes:
+      - postgres_storage:/var/lib/postgresql/data/
+    env_file:
+      - env_postgres.dev
+
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
+    volumes:
+      - static_volume:/static
+    depends_on:
+      - web
+
+volumes:
+  postgres_storage:
+  static_volume:
